@@ -1,25 +1,6 @@
 const db = [];
-let proximoId = 1;
+const model = require("../controllers/barbeiro.js");
 const barbearia = require("./barbearia.js");
-
-const model = (body, id=proximoId) => {
-    if(body.nome != undefined &&
-       body.nome != "" &&
-       body.foto != undefined &&
-       body.foto != "" &&
-       body.bio != undefined &&
-       body.bio != "" &&
-       barbearia.show(body.idBarbearia)
-    ){
-        return {
-            id: id,
-            nome: body.nome,
-            foto: body.foto,
-            bio: body.bio,
-            idBarbearia: body.idBarbearia
-        }
-    }
-}
 
 const store = (body) => {
     const novo = model(body);

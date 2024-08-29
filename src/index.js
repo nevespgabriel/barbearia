@@ -4,6 +4,7 @@ const usuario_controller = require("./controllers/usuario.js");
 const rede_controller = require("./controllers/rede.js");
 const barbearia_controller = require("./controllers/barbearia.js");
 const servico_controller = require("./controllers/servico.js");
+const atendimento_controller = require("./controllers/atendimento.js");
 const cep_endereco = require("./middlewares/cep_endereco.js");
 
 const porta = 6000;
@@ -115,7 +116,7 @@ app.get("/barbearia/:id", (req, res) => {
     res.json(barbearia);
 });
 
-app.put("/barbearia/:id", (req, res) => {
+app.put("/barbearia/:id", cep_endereco, (req, res) => {
     const body = req.body;
     const code = barbearia_controller.update(body, req.params.id);
     res.status(code).json();
@@ -181,6 +182,35 @@ app.put("/servico/:id", (req, res) => {
 
 app.delete("/servico/:id", (req,res) => {
     servico_controller.destroy(req.params.id);
+    res.json();
+})
+
+//========================================================================
+
+app.post("/atendimento", (req, res) => {
+    const body = req.body;
+    const code = atendimento_controller.store(body);
+    res.status(code).json();
+});
+
+app.get("/atendimento", (req, res) => {
+    const atendimentos = atendimento_controller.index();
+    res.json(atendimentos);
+})
+
+app.get("/atendimento/:id", (req, res) => {
+    const atendimento = atendimento_controller.show(req.params.id);
+    res.json(atendimento);
+});
+
+app.put("/atendimento/:id", (req, res) => {
+    const body = req.body;
+    const code = atendimento_controller.update(body, req.params.id);
+    res.status(code).json();
+})
+
+app.delete("/atendimento/:id", (req,res) => {
+    atendimento_controller.destroy(req.params.id);
     res.json();
 })
 
