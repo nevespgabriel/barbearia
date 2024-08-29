@@ -1,4 +1,5 @@
 let proximoId = 1;
+const barbearia = require("../controllers/barbearia.js");
 
 module.exports = (body, id=proximoId) => {
     if(body.nome != undefined &&

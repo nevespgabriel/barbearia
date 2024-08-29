@@ -1,4 +1,5 @@
 let proximoId = 1;
+const barbeiro = require("../controllers/barbeiro.js");
 
 module.exports = (body, id=proximoId) => {
     if(body.nome != undefined &&

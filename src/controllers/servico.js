@@ -1,6 +1,5 @@
 const db = [];
 const model = require("../models/servico.js");
-const barbeiro = require("./barbeiro.js");
 
 const store = (body) => {
     const novo = model(body);

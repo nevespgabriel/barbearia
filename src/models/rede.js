@@ -1,9 +1,10 @@
 let proximoId = 1;
+const usuario = require("../controllers/usuario.js");
 
 module.exports = (body, id=proximoId) => {
     if(body.nome != undefined &&
        body.nome != "" &&
-       usuario.show(idUsuario)
+       usuario.show(body.idUsuario)
     ){
         return {
             id: id,

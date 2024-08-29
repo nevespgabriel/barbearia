@@ -1,4 +1,5 @@
 let proximoId = 1;
+const cliente = require("../controllers/cliente.js");
 
 module.exports = (body, id=proximoId) => {
     if(body.servicos != undefined &&

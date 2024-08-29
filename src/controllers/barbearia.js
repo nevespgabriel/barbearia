@@ -1,6 +1,5 @@
 const db = [];
 const model = require("../models/barbearia.js");
-const rede = require("./rede.js");
 
 const store = (body) => {
     const novo = model(body);

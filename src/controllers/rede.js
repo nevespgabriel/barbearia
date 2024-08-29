@@ -1,6 +1,5 @@
 const db = [];
 const model = require("../models/rede.js")
-const usuario = require("./usuario.js");
 
 const store = (body) => {
     const novo = model(body);

@@ -1,9 +1,9 @@
 const express = require("express")
 const cliente_controller = require("./controllers/cliente.js");
-const usuario_controller = require("./controllers/usuario.js");
 const rede_controller = require("./controllers/rede.js");
 const barbearia_controller = require("./controllers/barbearia.js");
 const servico_controller = require("./controllers/servico.js");
+const usuario_router = require("./routes/usuario.js");
 const atendimento_controller = require("./controllers/atendimento.js");
 const cep_endereco = require("./middlewares/cep_endereco.js");
 
@@ -41,35 +41,6 @@ app.delete("/cliente/:id", (req,res) => {
 
 //========================================================================
 
-app.post("/usuario", (req, res) => {
-    const body = req.body;
-    const code = usuario_controller.store(body);
-    res.status(code).json();
-});
-
-app.get("/usuario", (req, res) => {
-    const usuarios = usuario_controller.index();
-    res.json(usuarios);
-})
-
-app.get("/usuario/:id", (req, res) => {
-    const usuario = usuario_controller.show(req.params.id);
-    res.json(usuario);
-});
-
-app.put("/usuario/:id", (req, res) => {
-    const body = req.body;
-    const code = usuario_controller.update(body, req.params.id);
-    res.status(code).json();
-})
-
-app.delete("/usuario/:id", (req,res) => {
-    usuario_controller.destroy(req.params.id);
-    res.json();
-})
-
-//========================================================================
-
 app.post("/rede", (req, res) => {
     const body = req.body;
     const code = rede_controller.store(body);
@@ -100,9 +71,9 @@ app.delete("/rede/:id", (req,res) => {
 //========================================================================
 
 app.post("/barbearia", cep_endereco, (req, res) => {
-    //const body = req.body;
-    //const code = barbearia_controller.store(body);
-    //res.status(code).json();
+    const body = req.body;
+    const code = barbearia_controller.store(body);
+    res.status(code).json();
     res.json(req.body);
 });
 
@@ -213,6 +184,9 @@ app.delete("/atendimento/:id", (req,res) => {
     atendimento_controller.destroy(req.params.id);
     res.json();
 })
+//========================================================================
+
+app.use("/usuario", usuario_router);
 
 //========================================================================
 
