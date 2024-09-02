@@ -5,7 +5,7 @@ const barbearia_router = require("./routes/barbearia.js");
 const servico_router = require("./routes/servico.js");
 const usuario_router = require("./routes/usuario.js");
 const atendimento_router = require("./routes/atendimento.js");
-const barbeiro_router = require("./controllers/barbeiro.js");
+const barbeiro_router = require("./routes/barbeiro.js");
 const cep_endereco = require("./middlewares/cep_endereco.js");
 
 const porta = 6000;
